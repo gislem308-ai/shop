@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passer une Commande</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Ma<span>Boutique</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Produits</a></li>
+        <li><a href="contact.html" class="active">Passer Commande</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="order-wrapper">
+      <div class="order-header">
+        <h2>Finaliser votre Commande</h2>
+        <p>Remplissez vos coordonnées pour la livraison à domicile.</p>
+      </div>
+
+      <form id="order-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="Nouvelle Commande Client">
+
+        <div class="form-section-title">1. Détails de la Commande</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="produit">Produit choisi *</label>
+            <select id="produit" name="produit" required>
+              <option value="" disabled selected>-- Choisir un produit --</option>
+              <option value="ralph lauren">ralph lauren</option>
+              <option value="ralph lauren (blue)">ralph lauren (blue)</option>
+              <option value="pantalon baggy grey">pantalon baggy grey</option>
+              <option value="pantalon baggy blue jean">pantalon baggy blue jean</option>
+              <option value="pantalon baggy black">pantalon baggy black</option>
+              <option value="air force 1 all white">air force 1 all white</option>
+              <option value="air force 1 all black">air force 1 all black</option>
+              <option value="men grey hoodie">men grey hoodie</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quantite">Quantité *</label>
+            <input type="number" id="quantite" name="quantite" value="1" min="1" max="50" required>
+          </div>
+        </div>
+
+        <div class="form-group" id="prix-box" style="display: none;">
+          <label for="prix_affiche">Prix Unitaire / Total estimé</label>
+          <input type="text" id="prix_affiche" name="prix_estime" readonly>
+        </div>
+
+        <div class="form-section-title">2. Coordonnées de Livraison</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom et Prénom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Ex: Ahmed Ben Salah" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telephone">Numéro de Téléphone *</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="Ex: 20 123 456" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="gouvernorat">Ville / Gouvernorat *</label>
+            <input type="text" id="gouvernorat" name="gouvernorat" placeholder="Ex: Tunis, Sfax, Sousse..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="code_postal">Code Postal</label>
+            <input type="text" id="code_postal" name="code_postal" placeholder="Ex: 1000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="adresse">Adresse complète (Rue, quartier, repère) *</label>
+          <input type="text" id="adresse" name="adresse" placeholder="Ex: Rue Habib Bourguiba, Résidence..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="remarque">Remarque supplémentaire (Optionnel)</label>
+          <textarea id="remarque" name="remarque" rows="3" placeholder="Ex: Appeler avant la livraison..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">Confirmer la Commande</button>
+        <div id="status-msg"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 MaBoutique - Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const prodParam = params.get("produit");
+    const prixParam = parseFloat(params.get("prix"));
+    const panierParam = params.get("panier");
+    const totalParam = parseFloat(params.get("total"));
+
+    const selectProduit = document.getElementById("produit");
+    const inputQuantite = document.getElementById("quantite");
+    const prixBox = document.getElementById("prix-box");
+    const prixAffiche = document.getElementById("prix_affiche");
+
+    if (panierParam) {
+      const opt = document.createElement("option");
+      opt.value = panierParam;
+      opt.textContent = "🛒 Panier : " + panierParam;
+      selectProduit.appendChild(opt);
+      selectProduit.value = panierParam;
+      inputQuantite.value = 1;
+      inputQuantite.readOnly = true;
+
+      if (!isNaN(totalParam) && totalParam > 0) {
+        prixBox.style.display = "block";
+        prixAffiche.value = `Total Panier : ${totalParam.toFixed(2)} DT`;
+      }
+    } else if (prodParam) {
+      selectProduit.value = prodParam;
+    }
+
+    function updateTotal() {
+      if (!panierParam && !isNaN(prixParam) && prixParam > 0) {
+        prixBox.style.display = "block";
+        const qte = parseInt(inputQuantite.value) || 1;
+        const total = (prixParam * qte).toFixed(2);
+        prixAffiche.value = `${prixParam.toFixed(2)} DT x ${qte} = ${total} DT`;
+      }
+    }
+
+    updateTotal();
+    inputQuantite.addEventListener("input", updateTotal);
+
+    const form = document.getElementById("order-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const statusMsg = document.getElementById("status-msg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Envoi de la commande...";
+      statusMsg.className = "";
+      statusMsg.style.display = "none";
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          statusMsg.textContent = "✅ Votre commande a été envoyée avec succès ! Nous vous contacterons bientôt.";
+          statusMsg.className = "success";
+          if (panierParam) {
+            localStorage.removeItem("maboutique_cart");
+          }
+          form.reset();
+          prixBox.style.display = "none";
+        } else {
+          throw new Error("Erreur");
+        }
+      } catch (err) {
+        statusMsg.textContent = "❌ Erreur lors de l'envoi. Vérifiez votre connexion ou votre clé Web3Forms.";
+        statusMsg.className = "error";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Confirmer la Commande";
+      }
+    });
+  </script>
+
+</body>
+</html>

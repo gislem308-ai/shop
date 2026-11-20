@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique - Nos Produits</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barre de navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Ma<span>Boutique</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Produits</a></li>
+        <li><a href="contact.html">Passer Commande</a></li>
+        <li>
+          <button type="button" class="cart-nav-btn" id="open-cart-btn">
+            🛒 Panier <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- En-tête de la page -->
+  <header class="hero">
+    <h1>Découvrez Nos Produits</h1>
+    <p>Choisissez l'article qui vous plaît et passez votre commande en quelques clics.</p>
+  </header>
+
+  <!-- Grille des 8 éléments -->
+  <main class="container">
+    <div class="products-grid">
+
+      <!-- Élément 1 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="polo.jpg" alt="ralph lauren">
+        </div>
+        <div class="product-info">
+          <h3>ralph lauren</h3>
+          <p class="product-desc">polo beige homme</p>
+          <div class="product-footer">
+            <span class="price">67.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="ralph lauren" data-price="67.00" data-img="polo.jpg">+ Panier</button>
+              <a href="contact.html?produit=ralph%20lauren&prix=67.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 2 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="polo2.jpg" alt="ralph lauren">
+        </div>
+        <div class="product-info">
+          <h3>ralph lauren</h3>
+          <p class="product-desc">polo blue homme</p>
+          <div class="product-footer">
+            <span class="price">67.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="ralph lauren (blue)" data-price="67.00" data-img="polo2.jpg">+ Panier</button>
+              <a href="contact.html?produit=ralph%20lauren%20(blue)&prix=67.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 3 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="baggy1.jpg" alt="pantalon baggy">
+        </div>
+        <div class="product-info">
+          <h3>pantalon baggy</h3>
+          <p class="product-desc">superbaggy grey pant with design</p>
+          <div class="product-footer">
+            <span class="price">120.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="pantalon baggy grey" data-price="120.00" data-img="baggy1.jpg">+ Panier</button>
+              <a href="contact.html?produit=pantalon%20baggy%20grey&prix=120.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 4 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="baggy2.jpg" alt="pantalon baggy">
+        </div>
+        <div class="product-info">
+          <h3>pantalon baggy</h3>
+          <p class="product-desc">blue baggy jean</p>
+          <div class="product-footer">
+            <span class="price">92.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="pantalon baggy blue jean" data-price="92.00" data-img="baggy2.jpg">+ Panier</button>
+              <a href="contact.html?produit=pantalon%20baggy%20blue%20jean&prix=92.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 5 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="baggy3.jpg" alt="pantalon baggy">
+        </div>
+        <div class="product-info">
+          <h3>pantalon baggy</h3>
+          <p class="product-desc">superbaggy black pant</p>
+          <div class="product-footer">
+            <span class="price">120.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="pantalon baggy black" data-price="120.00" data-img="baggy3.jpg">+ Panier</button>
+              <a href="contact.html?produit=pantalon%20baggy%20black&prix=120.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 6 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="air1.jpg" alt="chaussure">
+        </div>
+        <div class="product-info">
+          <h3>chaussure</h3>
+          <p class="product-desc">air forcel all white</p>
+          <div class="product-footer">
+            <span class="price">150.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="air force 1 all white" data-price="150.00" data-img="air1.jpg">+ Panier</button>
+              <a href="contact.html?produit=air%20force%201%20all%20white&prix=150.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 7 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="air2.jpg" alt="chaussure">
+        </div>
+        <div class="product-info">
+          <h3>chaussure</h3>
+          <p class="product-desc">air forcel all black</p>
+          <div class="product-footer">
+            <span class="price">150.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="air force 1 all black" data-price="150.00" data-img="air2.jpg">+ Panier</button>
+              <a href="contact.html?produit=air%20force%201%20all%20black&prix=150.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Élément 8 -->
+      <article class="product-card">
+        <div class="product-img-box">
+          <img src="hodie1.jpg" alt="cappuche">
+        </div>
+        <div class="product-info">
+          <h3>cappuche</h3>
+          <p class="product-desc">men grey hodie</p>
+          <div class="product-footer">
+            <span class="price">85.00 DT</span>
+            <div class="card-actions">
+              <button type="button" class="btn-add-cart" data-name="men grey hoodie" data-price="85.00" data-img="hodie1.jpg">+ Panier</button>
+              <a href="contact.html?produit=men%20grey%20hoodie&prix=85.00" class="btn-order">Commander</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 MaBoutique - Tous droits réservés.</p>
+  </footer>
+
+  <!-- Drawer du Panier -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>🛒 Mon Panier</h3>
+      <button type="button" class="close-cart-btn" id="close-cart-btn">&times;</button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart">Votre panier est vide.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total à payer :</span>
+        <strong id="cart-total">0.00 DT</strong>
+      </div>
+      <button type="button" class="btn-checkout" id="checkout-btn">Commander le panier</button>
+      <button type="button" class="btn-clear-cart" id="clear-cart-btn">Vider le panier</button>
+    </div>
+  </aside>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("maboutique_cart")) || [];
+
+    const cartDrawer = document.getElementById("cart-drawer");
+    const cartOverlay = document.getElementById("cart-overlay");
+    const cartItemsEl = document.getElementById("cart-items");
+    const cartCountEl = document.getElementById("cart-count");
+    const cartTotalEl = document.getElementById("cart-total");
+
+    function saveCart() {
+      localStorage.setItem("maboutique_cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function openCart() {
+      cartDrawer.classList.add("open");
+      cartOverlay.classList.add("open");
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove("open");
+      cartOverlay.classList.remove("open");
+    }
+
+    document.getElementById("open-cart-btn").addEventListener("click", openCart);
+    document.getElementById("close-cart-btn").addEventListener("click", closeCart);
+    cartOverlay.addEventListener("click", closeCart);
+
+    document.querySelectorAll(".btn-add-cart").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price) || 0;
+        const img = btn.dataset.img;
+
+        const existing = cart.find((item) => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, img, qty: 1 });
+        }
+
+        saveCart();
+        openCart();
+      });
+    });
+
+    function renderCart() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+      cartCountEl.textContent = totalQty;
+      cartTotalEl.textContent = totalPrice.toFixed(2) + " DT";
+
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<p class="empty-cart">Votre panier est vide.</p>';
+        return;
+      }
+
+      cartItemsEl.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <p>${item.price.toFixed(2)} DT</p>
+            <div class="qty-controls">
+              <button type="button" onclick="changeQty(${index}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button type="button" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+          <button type="button" class="remove-item-btn" onclick="removeItem(${index})">&times;</button>
+        </div>
+      `).join("");
+    }
+
+    window.changeQty = function(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart();
+    };
+
+    window.removeItem = function(index) {
+      cart.splice(index, 1);
+      saveCart();
+    };
+
+    document.getElementById("clear-cart-btn").addEventListener("click", () => {
+      cart = [];
+      saveCart();
+    });
+
+    document.getElementById("checkout-btn").addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert("Votre panier est vide !");
+        return;
+      }
+      const summary = cart.map((i) => `${i.name} (x${i.qty})`).join(" + ");
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0).toFixed(2);
+      window.location.href = `contact.html?panier=${encodeURIComponent(summary)}&total=${total}`;
+    });
+
+    renderCart();
+  </script>
+
+</body>
+</html>
